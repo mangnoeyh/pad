@@ -1,0 +1,3 @@
+# Local profiling and in-process SQL; no external AI or cloud API required.
+pandas>=2.2,<4
+duckdb>=1.1,<3

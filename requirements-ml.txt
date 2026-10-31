@@ -1,0 +1,2 @@
+-r requirements-core.txt
+scikit-learn>=1.4,<2

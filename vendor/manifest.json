@@ -1,0 +1,123 @@
+{
+  "schema": 1,
+  "checked_on": "2026-10-31",
+  "imports": [
+    {
+      "commit": "1a453698fc3ff7cf190c5947d3f903d2b3be20b7",
+      "source_sha256": "7853a79c2543098c97f544b327ef64d7f17c9374481086bdebd8d351a34e5293",
+      "destination": ".agents/skills/evidence-debug/SKILL.md",
+      "imported_sha256": "2743cb7ecdebae27cfd052ed31a190ba7b39200e83c1463410215f0e41eb6bdb",
+      "license": "MIT",
+      "changes": "Neutral name and work-phase language; preserve guided checkpoints and bounded iteration.",
+      "author": "5daegi"
+    },
+    {
+      "commit": "1a453698fc3ff7cf190c5947d3f903d2b3be20b7",
+      "source_sha256": "0da33ed814ee87e72db078f489c4447af72f13d9f25d9e17476f32efd77705fc",
+      "destination": ".agents/skills/evidence-debug/LICENSE",
+      "imported_sha256": "a37e0e9697144819e1d965176ac4ae5bc3fa02d11e7812036bbcadf6dafe2400",
+      "license": "MIT",
+      "changes": "none Normalize text line endings to LF without changing the license wording.",
+      "author": "5daegi"
+    },
+    {
+      "commit": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+      "source_sha256": "a37e0e9697144819e1d965176ac4ae5bc3fa02d11e7812036bbcadf6dafe2400",
+      "destination": ".agents/skills/evidence-debug/UPSTREAM_LICENSE",
+      "imported_sha256": "a37e0e9697144819e1d965176ac4ae5bc3fa02d11e7812036bbcadf6dafe2400",
+      "license": "MIT",
+      "changes": "none",
+      "author": "obra"
+    },
+    {
+      "commit": "4838900ed3e352c6ed025488de81611d2461c3b9",
+      "source_sha256": "80bbe0f05b1edfcda9b26563ecbf9a8824d9f8bfe7cdc80566a1b05e689ed5e1",
+      "destination": ".agents/skills/korean-report-polish/SKILL.md",
+      "imported_sha256": "d25ea9a697fbd6ea4aa86ea9530dcf12fd71135279b5ace15b2ae482ac923162",
+      "license": "MIT",
+      "changes": "Preserve collaboration facts; prioritize requested style over fixed length; no assistance during AI-restricted phases. Link an optional original lexical comparison helper while retaining manual semantic and reference review.",
+      "author": "yoobinkim541"
+    },
+    {
+      "commit": "4838900ed3e352c6ed025488de81611d2461c3b9",
+      "source_sha256": "c10426e4fce270b0ff6447d281ebb294367722b36092176244c0e1a00cdf6951",
+      "destination": ".agents/skills/korean-report-polish/LICENSE",
+      "imported_sha256": "c10426e4fce270b0ff6447d281ebb294367722b36092176244c0e1a00cdf6951",
+      "license": "MIT",
+      "changes": "none",
+      "author": "yoobinkim541"
+    },
+    {
+      "commit": "f1aa57e33833159221fcfec7571396273fbdd4d6",
+      "source_sha256": "501e95a7d0cd1b6c033646e263b958b3c4a3b1b02e6c0c6da6f8557693222c60",
+      "destination": ".agents/skills/code-walkthrough/SKILL.md",
+      "imported_sha256": "5529c1dc529145c1e3263b3ad982cf7a0fe2f5492c5db79d63854293a2118c63",
+      "license": "MIT",
+      "changes": "Condense input-to-function walkthrough; remove mandatory grading, restatement, separate-file and skill dependencies; preserve requested reports and checkpoints.",
+      "author": "Ryanpark3142"
+    },
+    {
+      "commit": "f1aa57e33833159221fcfec7571396273fbdd4d6",
+      "source_sha256": "268f4096b874656fafc5057ff36530e9b178dcd38914ebdb4b27bef8b571608a",
+      "destination": ".agents/skills/code-walkthrough/LICENSE",
+      "imported_sha256": "268f4096b874656fafc5057ff36530e9b178dcd38914ebdb4b27bef8b571608a",
+      "license": "MIT",
+      "changes": "none",
+      "author": "Ryanpark3142"
+    },
+    {
+      "commit": "80cdb84633e654294ab29be4a724b36d2da39a93",
+      "source_sha256": "41a1e65b924a982be8527fee4349e13508587aa2acf31eba23847c0ce1a258c2",
+      "destination": ".agents/skills/data-triage/references/data-audit.md",
+      "imported_sha256": "18d0ca07b7166aaa9b479babdecd844a58366cc0f578e69e14bcae9ac441c62f",
+      "license": "MIT",
+      "changes": "Use actual deployment/required metrics; reuse existing decision record; avoid forced modeling or dropped source columns. Record only meaningful repeatable checks; no compulsory script per observation.",
+      "author": "ColdTbrew"
+    },
+    {
+      "commit": "80cdb84633e654294ab29be4a724b36d2da39a93",
+      "source_sha256": "4a19ed3b97d78226eb7b0f327bb770cf9afe961cdb6170c98ee010a7533a57b9",
+      "destination": ".agents/skills/analysis-validation/references/honest-eval.md",
+      "imported_sha256": "c66581fe431972824217608e7a1299a424e695224273de4d23bd95c457a1c26a",
+      "license": "MIT",
+      "changes": "Use actual deployment/required metrics; reuse existing decision record; avoid forced modeling or dropped source columns.",
+      "author": "ColdTbrew"
+    },
+    {
+      "commit": "80cdb84633e654294ab29be4a724b36d2da39a93",
+      "source_sha256": "c44c5ac593ae548622dc96b8868065cb1cfcf007460b95e0c2b25c4d18dce632",
+      "destination": "vendor/licenses/data-guidance-LICENSE",
+      "imported_sha256": "c44c5ac593ae548622dc96b8868065cb1cfcf007460b95e0c2b25c4d18dce632",
+      "license": "MIT",
+      "changes": "none",
+      "author": "ColdTbrew"
+    },
+    {
+      "commit": "80cdb84633e654294ab29be4a724b36d2da39a93",
+      "source_sha256": "4fc7a2661b699423812b7cb44805efe5c691586f4ff61694807488667cf69237",
+      "destination": "vendor/licenses/data-guidance-NOTICE",
+      "imported_sha256": "4fc7a2661b699423812b7cb44805efe5c691586f4ff61694807488667cf69237",
+      "license": "MIT",
+      "changes": "none",
+      "author": "ColdTbrew"
+    },
+    {
+      "commit": "ca45fc496a3436251f191354091d557da31c15b5",
+      "source_sha256": "d91970639e9f5c37682ac7ab60094d35f1c7c1f38d731bd56396563aee10c1d3",
+      "destination": ".agents/skills/frontend-design/SKILL.md",
+      "imported_sha256": "e2891f2d3c47846932e60dab50cdfaedb422a1726152eac88d7ba6d469ec99dc",
+      "license": "Apache-2.0",
+      "changes": "Adapt fictional client role and UI-review steps to the actual brief, permitted tools and guided scope. Make visual planning conditional, palette and wireframes optional.",
+      "author": "anthropics"
+    },
+    {
+      "commit": "ca45fc496a3436251f191354091d557da31c15b5",
+      "source_sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+      "destination": ".agents/skills/frontend-design/LICENSE.txt",
+      "imported_sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+      "license": "Apache-2.0",
+      "changes": "none",
+      "author": "anthropics"
+    }
+  ]
+}
