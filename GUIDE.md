@@ -152,6 +152,9 @@ git -C pad rev-parse HEAD
 | 범위 변경·기준본·실제 전달 연결 | [baseline and delivery](.agents/skills/double-loop-solver/references/baseline-and-delivery.md) | 추가 조건 사전 점검, 전체 비용 재산정, 실험 승격, 전달 소스에서의 실행 재현 |
 | 고정 입력에서 후보 해 개선 | [optimization validation](.agents/skills/analysis-validation/references/optimization-validation.md) | 기준선 실측, 제약과 목적 분리, 축소 선별 뒤 전체 검증, 같은 입력·조건의 안정본 보존 |
 | 문제 구조에 맞는 방법 선택·후보 비교 | [method selection](.agents/skills/double-loop-solver/references/method-selection.md), [비교 양식](templates/candidate-comparison.md) | 적용 조건·지원하지 않는 제약 확인, 같은 기준의 처리 범위·품질·시간 비교 |
+| 기본 알고리즘부터 운영 최적화까지 찾아보기 | [방법 목차](docs/methods/INDEX.md) | 그래프·DP·구간·문자열·수치·배정·흐름·경로·일정·공간·개선. 관련 절만 읽고 목록 밖 대안도 검토 |
+| 여러 방법의 연결·실패·사용자 설명 | [조합](docs/methods/composition.md), [검산](docs/methods/validation.md), [쉬운 설명](docs/methods/explain.md) | 후보 손실과 결합 제약, 작은 정확 해와 전체 검증, 현재 설정·실제 서비스 경로 연결 |
+| 기본 계산의 실행 예제와 독립 검산 | [실행 예제 안내](examples/methods/USAGE.md) | 표준 라이브러리 함수·지원 계약·검산 명령. 자료에 있는 모든 방법이 구현된 것은 아님 |
 | 작은 합성 문제에서 계산·독립 검산 연습 | [allocation lab](examples/ALLOCATION_LAB.md) | 표준 라이브러리로 후보 생성, 저장 결과 재검사, 한도 내 전체 열거. 범용 최적화 엔진이 아님 |
 | 두 트랙의 결정 전달·재계산·설명 연습 | [two-track rehearsal](examples/TWO_TRACK_REHEARSAL.md) | 실제 워커 증거와 모의 대화 구분, 설정 변경 뒤 재검사, 사용자 학습 확인 |
 | 요구사항에서 불변식 찾기 | [analysis-validation](.agents/skills/analysis-validation/SKILL.md) | 조건이 성립하는 경우에만 순서 변경·멱등성·직렬화 왕복 확인; 새 패키지 불필요 |

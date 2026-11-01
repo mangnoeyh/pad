@@ -38,6 +38,8 @@ Time-box useful comparisons on the same validated inputs and contract, including
 
 Use [method selection](method-selection.md) when the problem structure needs a concrete algorithm comparison. Give workers the same input/settings/policy versions, objective order and [comparison fields](../../../../templates/candidate-comparison.md); reuse their existing evidence rather than adding parallel reports. Preserve partial experiments for diagnosis and scoped recovery. Changes to policy and changes to algorithms must remain distinguishable. The optional synthetic lab illustrates these mechanics; run it only for preparation or when its small contract actually matches the task.
 
+Find relevant families through the [method index](../../../../docs/methods/INDEX.md), including alternatives beyond its contents. Load only the necessary sections. Where several methods interact, explain their separate roles, lost candidates and shared constraints; verify the combined service path rather than treating component correctness as whole-task success. Use the plain-language reference when the user needs to understand the choice.
+
 Send confirmed choices and their acceptance criteria to affected workers through the contract-update process below. Keep the recommendation, actual user decision or delegated choice, alternatives considered, measured evidence and unresolved limits in the existing task note. Carry those reasons and evidence into the final explanation and study walkthrough so the user can explain why the chosen method fits and when its limits matter.
 
 ## Keep discovery and clarification active

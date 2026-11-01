@@ -23,6 +23,8 @@ After shared understanding, main proactively proposes suitable algorithm or solu
 
 For a concrete method choice, read [method selection](references/method-selection.md) and adapt the [candidate comparison](../../../templates/candidate-comparison.md) to the actual contract. A small [allocation lab](../../../examples/ALLOCATION_LAB.md) demonstrates independent saved-result checking; it is an optional synthetic example, not a mandatory startup step or a solver for arbitrary tasks.
 
+Use the [method index](../../../docs/methods/INDEX.md) to locate relevant algorithm families, applicability conditions, counterexamples and verification. Load only the needed sections; consider suitable methods beyond the catalog. For combined methods, inspect stage interfaces, candidate loss and shared constraints through the composition reference. Distinguish documented approaches, bundled example contracts and actual service support; the library does not authorize extra dependencies or replace current-input verification.
+
 If the user asks for stage-by-stage control, pause at those checkpoints instead. A fully autonomous request may omit the comprehension pause. Preserve the actual requested mode and scope; never infer approval or understanding from silence. Routine commands and worker handoffs inside authorized scope do not need repeated approval.
 
 ## Establish the contract
