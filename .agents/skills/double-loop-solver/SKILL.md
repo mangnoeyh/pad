@@ -19,6 +19,8 @@ Read [stakeholder questions](references/stakeholder-questions.md) at startup and
 
 Keep decision explanations easy to follow: observed result, one recommendation and reason, concrete benefits and tradeoffs, then one material user decision at a time. Do not bundle choices or invent questions for routine work; continue independent authorized implementation while dependent decisions wait. The guided reference explains the interaction pattern and distinguishes user decisions from stakeholder question drafts.
 
+After shared understanding, main proactively proposes suitable algorithm or solution approaches when they materially affect quality, runtime or resource use; do not wait for the user to name a method. Ground a short comparison and one recommendation in the actual inputs, constraints and available environment, explain the mechanism and tradeoffs plainly, and ask only the consequential unresolved operational choice. Revisit after initial results or bottlenecks. Follow the guided reference's approach-selection procedure for bounded comparisons, worker handoff and recorded evidence; routine choices remain delegated.
+
 If the user asks for stage-by-stage control, pause at those checkpoints instead. A fully autonomous request may omit the comprehension pause. Preserve the actual requested mode and scope; never infer approval or understanding from silence. Routine commands and worker handoffs inside authorized scope do not need repeated approval.
 
 ## Establish the contract
