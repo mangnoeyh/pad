@@ -17,6 +17,8 @@ Read [guided collaboration](references/guided-collaboration.md). The default sta
 
 Read [stakeholder questions](references/stakeholder-questions.md) at startup and after meaningful baseline results or partial replies. Main actively looks for operationally poor outcomes even when stated constraints pass, prepares questions the user can relay, and narrows unanswered parts until the decision is actionable. Distinguish authoritative requirements, confirmed business rules, chosen improvement objectives and provisional assumptions. Discovery is not authority to invent constraints or an undisclosed scoring rubric.
 
+Keep decision explanations easy to follow: observed result, one recommendation and reason, concrete benefits and tradeoffs, then one material user decision at a time. Do not bundle choices or invent questions for routine work; continue independent authorized implementation while dependent decisions wait. The guided reference explains the interaction pattern and distinguishes user decisions from stakeholder question drafts.
+
 If the user asks for stage-by-stage control, pause at those checkpoints instead. A fully autonomous request may omit the comprehension pause. Preserve the actual requested mode and scope; never infer approval or understanding from silence. Routine commands and worker handoffs inside authorized scope do not need repeated approval.
 
 ## Establish the contract
