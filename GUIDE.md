@@ -6,10 +6,10 @@
 
 [START_HERE.md](START_HERE.md)에 시작 요청과 재개 요청을 준비했습니다. 작업 공간에서 이 공개 키트를 별도 폴더로 가져오고, 시작 문서와 [double-loop-solver Skill](.agents/skills/double-loop-solver/SKILL.md)을 직접 읽히면 됩니다. 과제 루트와 기존 지침을 유지하세요.
 
-- 기본은 대화형 진행입니다. AI가 문제를 쉬운 말로 설명하고 사용자의 이해를 확인한 뒤, 방법과 다음 작업 단위를 함께 정합니다.
-- 사람의 외부 루프: 목표·가정·완료 기준과 중요한 선택을 결정합니다. AI는 선택지와 추천 이유를 설명합니다.
-- AI의 내부 루프: 동의한 단위 안에서 구현·검증·수정을 수행하고, 결정이 없어도 관찰·이유·다음 작업을 알려줍니다.
-- 대표 결과와 실제 검증 근거를 함께 확인하고 다음 단위로 넘어갑니다. 제출 전에는 사용자가 중요한 판단과 한계를 자신의 말로 설명할 기회를 갖습니다.
+- 처음에는 문제와 자료를 함께 이해하고 실제 병렬 기능을 짧게 확인합니다. 사용자의 이해 확인 후에는 시작 요청에 위임된 E2E 구현을 자율 진행합니다.
+- 메인은 사용자와 운영상 빠진 요구·핵심 최적화·목표 간 절충을 논의합니다. 담당자에게 보낼 질문을 만들고, 부분 답변은 미답 부분을 좁혀 다시 묻습니다.
+- 워커는 기존 환경에서 가장 단순한 유효한 방법으로 서비스 구현·검증을 계속합니다. 중요한 결정에 의존하는 부분만 기다리며, 메인이 확정한 변경을 명시적으로 전달합니다.
+- 메인은 통합·전체 검증도 책임집니다. 대표 결과·실제 데이터 처리·판단 근거를 설명하고, 제출 전 사용자가 자신의 말로 설명할 기회를 갖습니다.
 
 적용 순서와 내부·외부 루프 사례는 [이중 루프 적용 방법](DOUBLE_LOOP.md), 작업 완료 후 질답 구성과 연습은 [제출 전 예상 질답 준비](PRACTICE_QA.md)를 참고하세요.
 
@@ -103,7 +103,7 @@ python examples/tabular_ml.py data/demo/measurements.csv --target target --task 
 
 대화형 시작·재개 요청은 [START_HERE.md](START_HERE.md)를 사용하세요. 아래는 문제를 함께 읽는 짧은 시작 요청입니다. 이후 동의한 작업에 필요한 세부 Skill만 읽힙니다. 복제한 하위 폴더의 Skill이 자동 발견되는지는 실행 환경에 따라 다릅니다. 보이지 않으면 Skill 파일 경로를 직접 지정하세요. 기존 과제의 `AGENTS.md`를 덮어쓰지 마세요.
 
-> 이 키트의 START_HERE.md, double-loop-solver Skill과 references/guided-collaboration.md를 읽고 대화형으로 진행해줘. 과제 README와 자료 구조를 읽어 상황·목표·입력·필수 결과를 쉬운 말과 작은 예시로 설명해줘. 사실과 미정 기준을 구분하고, 내 이해를 확인한 뒤 멈춰줘. 내가 이해했다고 답하기 전에는 풀이 설계나 구현으로 넘어가지 마.
+> START_HERE.md의 두 트랙 진행을 적용해줘. 먼저 문제·자료·필수 결과를 쉬운 예시로 설명하고 내 이해를 확인해줘. 이해 확인 후에는 워커가 가장 간단한 방법으로 필수 E2E 구현을 자율 진행하고, 메인은 나와 숨은 운영 요구·핵심 최적화를 논의해줘. 담당자 답변의 미답 부분은 후속 질문으로 좁혀주고, 확정한 변경만 워커에게 전달해줘. 실제 병렬 실행과 답변 대기 중 실행 지속은 처음에 짧게 확인해줘.
 
 실행 후에는 다음처럼 검증을 요청할 수 있습니다.
 
@@ -146,7 +146,7 @@ git -C pad rev-parse HEAD
 | 내가 코드 흐름을 이해하고 싶을 때 | [code-walkthrough](.agents/skills/code-walkthrough/SKILL.md) | 실제 입력 → 파일·함수 → 관측 결과, 한 개념씩 |
 | 웹 UI 구현·다듬기 | [frontend-design](.agents/skills/frontend-design/SKILL.md) | 현재 요구·스택 안에서 디자인, 사람이 보는 화면 확인과 코드 검사 구분 |
 | 웹/API 동작 검증 | [app checks](.agents/skills/double-loop-solver/references/app-checks.md) | 실제 응답 코드·본문·상태 변화, 라벨·ID 연결, 사람의 미리보기 확인 |
-| 큰 독립 작업의 병렬 분담 | [parallel work](.agents/skills/double-loop-solver/references/parallel-work.md) | 메인 통합, 단순 읽기 분류는 사용 가능한 Luna, 구현은 Sol medium; 실제 지원·권한 안에서 선택 |
+| 메인 논의와 워커 구현의 병렬 분담 | [parallel work](.agents/skills/double-loop-solver/references/parallel-work.md) | 메인 통합, 단순 읽기 분류는 사용 가능한 Luna, 구현은 Sol medium; 실제 지원·권한 안에서 선택 |
 | 웹 입력·중복 실행·조건 변경·실패 복구 | [web state checks](.agents/skills/double-loop-solver/references/web-state-checks.md) | 실제 정책에 따른 경합·저장 결과·권한과 화면 상태 확인; 버튼 차단과 서버 처리 구분 |
 | 범위 변경·기준본·실제 전달 연결 | [baseline and delivery](.agents/skills/double-loop-solver/references/baseline-and-delivery.md) | 추가 조건 사전 점검, 전체 비용 재산정, 실험 승격, 전달 소스에서의 실행 재현 |
 | 고정 입력에서 후보 해 개선 | [optimization validation](.agents/skills/analysis-validation/references/optimization-validation.md) | 기준선 실측, 제약과 목적 분리, 축소 선별 뒤 전체 검증, 같은 입력·조건의 안정본 보존 |
@@ -159,4 +159,4 @@ git -C pad rev-parse HEAD
 
 원본 버전·수정 내역·저작권 고지는 [ATTRIBUTION.md](ATTRIBUTION.md)와 [vendor/manifest.json](vendor/manifest.json)에 있습니다. 외부 설치 스크립트·MCP 서버·모델 설정·자동 화면 조작 도구는 가져오지 않았습니다.
 
-기존 구현 수정, 실패 경로, 에디터·저장본·서버 불일치, 병렬 작업은 [진행 검토](.agents/skills/double-loop-solver/references/execution-review.md)의 해당 항목만 사용합니다. 사용자가 보낼 질문을 정리할 때는 [질문 기준](.agents/skills/double-loop-solver/references/stakeholder-questions.md)을 참고합니다. 전체 체크리스트를 모든 작업에 적용하지 않습니다.
+기존 구현 수정, 실패 경로, 에디터·저장본·서버 불일치, 병렬 작업은 [진행 검토](.agents/skills/double-loop-solver/references/execution-review.md)의 해당 항목만 사용합니다. 문제 파악과 첫 실행 결과부터 [질문 기준](.agents/skills/double-loop-solver/references/stakeholder-questions.md)을 적용해 중요한 운영상 빈틈을 찾고, 부분 답변의 미답 항목을 후속 질문으로 좁힙니다. 전체 체크리스트를 모든 작업에 적용하지 않습니다.

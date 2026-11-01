@@ -14,7 +14,7 @@ This repository supports bounded problem solving with local tabular-analysis too
 
 ## Choosing a skill
 
-- Use `.agents/skills/double-loop-solver/SKILL.md` for multistep implementation under a stable task contract and human review of material choices. `START_HERE.md` defaults to guided collaboration: read the Skill's `references/guided-collaboration.md`, explain the problem first, wait for understanding, agree on a method/work unit, and explain progress with pauses at the agreed checkpoints. Routine commands inside an approved unit do not need repeated approval. A user-authorized autonomous mode remains available.
+- Use `.agents/skills/double-loop-solver/SKILL.md` for multistep implementation and human review of material choices. `START_HERE.md` defaults to two-track collaboration: read `references/guided-collaboration.md`, explain the problem and wait for understanding, then let workers implement the simplest valid E2E path under the startup request's authorization while the main agent discusses operational needs and optimization with the user. Read `parallel-work.md` for an actual capability check and bounded worker assignments, and `stakeholder-questions.md` for proactive discovery and iterative clarification. Independent implementation continues while a material decision waits; do not pause every stage for routine approval. Honor any narrower user-requested pause. Main owns integration and evidence, and explicitly sends confirmed decisions to affected workers.
 - Use `.agents/skills/data-triage/SKILL.md` when starting with unfamiliar tabular data or diagnosing data quality.
 - Use `.agents/skills/analysis-validation/SKILL.md` when assessing an analysis conclusion, transformation, or predictive baseline before delivery.
 
