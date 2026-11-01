@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "resources": [
+    {"id": "R1", "capacity": 2},
+    {"id": "R2", "capacity": 3},
+    {"id": "R3", "capacity": 3}
+  ],
+  "items": [
+    {"id": "J1", "costs": {"R1": 1, "R2": 2}},
+    {"id": "J2", "costs": {"R1": 1}},
+    {"id": "J3", "costs": {"R1": 2}},
+    {"id": "J4", "costs": {"R2": 1, "R3": 2}},
+    {"id": "J5", "costs": {"R2": 1}},
+    {"id": "J6", "costs": {"R2": 2}},
+    {"id": "J7", "costs": {"R3": 1}},
+    {"id": "J8", "costs": {"R3": 2}}
+  ]
+}

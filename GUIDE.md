@@ -151,6 +151,9 @@ git -C pad rev-parse HEAD
 | 웹 입력·중복 실행·조건 변경·실패 복구 | [web state checks](.agents/skills/double-loop-solver/references/web-state-checks.md) | 실제 정책에 따른 경합·저장 결과·권한과 화면 상태 확인; 버튼 차단과 서버 처리 구분 |
 | 범위 변경·기준본·실제 전달 연결 | [baseline and delivery](.agents/skills/double-loop-solver/references/baseline-and-delivery.md) | 추가 조건 사전 점검, 전체 비용 재산정, 실험 승격, 전달 소스에서의 실행 재현 |
 | 고정 입력에서 후보 해 개선 | [optimization validation](.agents/skills/analysis-validation/references/optimization-validation.md) | 기준선 실측, 제약과 목적 분리, 축소 선별 뒤 전체 검증, 같은 입력·조건의 안정본 보존 |
+| 문제 구조에 맞는 방법 선택·후보 비교 | [method selection](.agents/skills/double-loop-solver/references/method-selection.md), [비교 양식](templates/candidate-comparison.md) | 적용 조건·지원하지 않는 제약 확인, 같은 기준의 처리 범위·품질·시간 비교 |
+| 작은 합성 문제에서 계산·독립 검산 연습 | [allocation lab](examples/ALLOCATION_LAB.md) | 표준 라이브러리로 후보 생성, 저장 결과 재검사, 한도 내 전체 열거. 범용 최적화 엔진이 아님 |
+| 두 트랙의 결정 전달·재계산·설명 연습 | [two-track rehearsal](examples/TWO_TRACK_REHEARSAL.md) | 실제 워커 증거와 모의 대화 구분, 설정 변경 뒤 재검사, 사용자 학습 확인 |
 | 요구사항에서 불변식 찾기 | [analysis-validation](.agents/skills/analysis-validation/SKILL.md) | 조건이 성립하는 경우에만 순서 변경·멱등성·직렬화 왕복 확인; 새 패키지 불필요 |
 | 문체 수정 전후 수치·단위·인용 후보 대조 | [compare_notes.py](tools/compare_notes.py), [사용 범위](.agents/skills/double-loop-solver/references/note-comparison.md) | 읽기 전용. 변경 후보를 보여주며 의미 보존은 별도 검토 |
 | 최종 코드·보고서·질답의 저장본 확인 | [review_delivery.py](tools/review_delivery.py), [계획과 기록 규격](.agents/skills/double-loop-solver/references/delivery-review.md) | 지정 파일 해시·형식·경로·예상 밖 파일 점검; 실제 전달 완료는 아님 |

@@ -36,6 +36,8 @@ Explain how each candidate works in plain language with a small, clearly labeled
 
 Time-box useful comparisons on the same validated inputs and contract, including objectives, policy and required behavior. Evaluate relevant metrics alongside coverage and required invariants, and record the settings, resource budget and actual results. Preserve the feasible baseline and revalidate it against current inputs, settings and policy before fallback or adoption. A search that found no valid result within its budget has not proved that no valid result exists. Stop low-value trials in time for integration, verification and explanation.
 
+Use [method selection](method-selection.md) when the problem structure needs a concrete algorithm comparison. Give workers the same input/settings/policy versions, objective order and [comparison fields](../../../../templates/candidate-comparison.md); reuse their existing evidence rather than adding parallel reports. Preserve partial experiments for diagnosis and scoped recovery. Changes to policy and changes to algorithms must remain distinguishable. The optional synthetic lab illustrates these mechanics; run it only for preparation or when its small contract actually matches the task.
+
 Send confirmed choices and their acceptance criteria to affected workers through the contract-update process below. Keep the recommendation, actual user decision or delegated choice, alternatives considered, measured evidence and unresolved limits in the existing task note. Carry those reasons and evidence into the final explanation and study walkthrough so the user can explain why the chosen method fits and when its limits matter.
 
 ## Keep discovery and clarification active
