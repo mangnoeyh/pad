@@ -2,7 +2,7 @@
 
 This repository supports bounded problem solving with local tabular-analysis tools. Apply these instructions to work using this kit; do not impose its workflow on unrelated tasks.
 
-- Read the actual task README, required outputs, constraints, and evaluation metric first. Task-specific instructions take precedence over this kit.
+- Read the actual task README, required outputs, constraints, and evaluation metric first. Task-specific instructions take precedence over this kit. Track rule source separately from enforcement: task-mandated constraints remain protected, while user-added policies can be objectives, defaults or currently enforced conditions that the user may revise or exempt within an explicit scope. Do not stop at rejecting a partial candidate; diagnose and explore bounded repair through user-policy changes, without quietly relaxing task requirements. Use the solver's baseline-and-delivery reference for authorized exceptions and full-result verification.
 - Select the smallest useful tools. Check available packages with `python tools/check_environment.py`; do not install an entire framework for a small analysis.
 - Preserve source data. Write derived files to an explicit output directory and do not silently overwrite existing work.
 - For tabular inputs, inspect schema, units, nulls, duplicates, identifiers, target availability, and time/group structure before drawing conclusions. Distinguish a bounded prefix from a representative sample or a full dataset.

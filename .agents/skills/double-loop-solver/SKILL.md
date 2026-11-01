@@ -25,6 +25,7 @@ Use [task-contract](../../../templates/task-contract.md) to assign a contract ID
 
 - Required outputs, mandatory constraints, permitted tools, and the authoritative sources behind them.
 - Confirmed README requirements, supplied data facts, and stakeholder statements, separately from assumptions and unresolved questions.
+- Each rule's source/authority separately from its enforcement: task-mandated constraint, user-added policy or implementation assumption; hard/default/objective status, scope and authorized exceptions. A user-added hard condition remains user-revisable and is not promoted into an immutable task mandate.
 - Observable acceptance criteria, protected invariants, and checks with known expected results.
 - The delivery deadline, available time, and a bounded improvement budget.
 
@@ -38,7 +39,7 @@ For an existing implementation, a negative-path test, a saved/editor/server disc
 
 When improving a candidate for supplied fixed inputs, use [optimization validation](../analysis-validation/references/optimization-validation.md) to measure the baseline and choose evaluation scope. Keep feasibility gates, proxy screening and final full-input checks distinct; do not apply predictive holdout rules to a different objective.
 
-For a new hard condition, material scope expansion, experimental candidate or final running/delivery candidate, read [baseline and delivery](references/baseline-and-delivery.md). Use low-cost feasibility checks and a cost-to-delivery estimate before expanding, preserve a rebuildable candidate with its contract, and connect the actual delivered snapshot to its execution and results. These are technical checks inside the agreed unit, not extra approvals for every command.
+For a new hard condition, user-policy relaxation or scoped exception, unresolved assignments, material scope expansion, experimental candidate or final running/delivery candidate, read [baseline and delivery](references/baseline-and-delivery.md). Use low-cost feasibility checks and a cost-to-delivery estimate before expanding, preserve a rebuildable candidate with its contract, and connect the actual delivered snapshot to its execution and results. These are technical checks inside the agreed unit, not extra approvals for every command.
 
 ## Inner loop: improve under the same contract
 
@@ -54,6 +55,8 @@ An agent's confidence, self-assigned score, or claim of completion is not correc
 ## Outer loop: review the contract
 
 Escalate material uncertainty about meaning, scope, success criteria, conflicting evidence, or architectural commitments that determine supported behavior. Also review repeated non-improvement, exhausted budgets, and proposals that trade away a mandatory requirement. Ordinary refactoring does not require escalation.
+
+A partial or worse candidate is not necessarily a dead end. Preserve promising experiments separately from the valid incumbent, distinguish rule conflicts from limited search, and explore small repairs by changing only user-added policies within the budget. Show affected subjects, scope, expected versus observed recovery and tradeoffs; apply an existing delegated adjustment range or obtain the user's decision before adopting a material change. A subject-triggered exception may apply to its whole assigned group: recompute eligibility from final membership after reassignment and verify all exceptions jointly. Task-mandated requirements remain protected. Once an authorized exception is part of the new contract and all remaining requirements pass, the candidate may become a valid deliverable; it is not permanently experimental merely because a user policy changed.
 
 Use [outer-review](../../../templates/outer-review.md) for a short decision packet: current contract ID, failure evidence, conflicting sources, realistic options, tradeoffs, and a recommended choice. Ask the authorized human to decide when the available instructions do not settle the issue. Keep independent work running within the authorized implementation scope while the dependent choice waits. In two-track mode, main explicitly sends the new contract version, changed rule, affected interfaces and acceptance evidence to affected workers; reconcile stale results before integration. Honor a user-requested whole-work pause. Do not treat silence, a reviewer recommendation, or an AI-generated approval as a human decision.
 
