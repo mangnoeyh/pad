@@ -13,8 +13,10 @@ https://github.com/mangnoeyh/pad.git 의 공개 키트를 사용해줘.
 허용된 작업 공간의 아직 없는 별도 폴더에 clone해줘. 처음이면 아직 없는 pad 폴더를 사용해줘.
 다운로드가 실패하면 반복하지 말고 사용 가능한 사본의 커밋과 제약을 알려줘.
 과제 루트·기존 README·AGENTS.md·원본 자료를 보존하고 실제 과제 지시를 우선해.
+실제 과제 루트와 키트 복제본 루트를 구분해 확인해. 이 요청의 키트 문서·docs/·templates/·tools/·examples/ 경로는 키트 루트 기준이고,
+references/는 .agents/skills/double-loop-solver/references/를 뜻해. 실행 위치에 따라 경로를 해석하고, 실제 과제 입력·결과·기록은 과제 루트의 허용 위치에 둬.
 키트의 START_HERE.md와 .agents/skills/double-loop-solver/SKILL.md,
-그 Skill의 references/guided-collaboration.md, parallel-work.md, stakeholder-questions.md를 읽어줘.
+그 Skill의 references/guided-collaboration.md, references/parallel-work.md, references/stakeholder-questions.md를 읽어줘.
 추가 스킬·도구는 GUIDE.md에서 지금 필요한 것만 스스로 선택하고 목적·관찰 결과·한계를 짧게 알려줘.
 
 기본 운영은 두 트랙이야. 메인은 나와 문제의 의미·숨은 운영 요구·핵심 최적화를 논의하고,
@@ -38,6 +40,7 @@ https://github.com/mangnoeyh/pad.git 의 공개 키트를 사용해줘.
 서비스는 현재 입력·설정·정책으로 기본 계산 → 미처리 진단 → 승인된 정책 안의 자동 회복·예외 선정 → 전체 검증 → 결과 적용을 수행해야 해.
 전원 처리가 필수라면 내 추가 선호 때문에 자동 처리가 막히지 않도록 완화 순서·한계·최후의 유효한 처리 방법을 개발 중 함께 정해.
 정상 재실행마다 개발자 대화·개별 승인·수동 명단 수정이나, 요구되지 않은 실행 중 AI 호출에 의존하지 마.
+설정 편집·저장과 계산 실행 요청은 실제 요구에 따라 구분해. 자동 재계산인지 버튼 실행인지 정하고, 접수한 요청을 상태 표시만 한 채 누락하지 마.
 허용 범위 안의 운영 설정 변경은 새 개발 정책을 승인받는 일과 구분해. 결과에는 입력·설정·정책 버전을 연결해.
 이전 정상 결과도 새 설정으로 재검증 없이 재사용하지 마. 입력 오류·증명된 불가능·시간 제한/해 미발견과 성공을 구분해.
 필수 제약을 깨거나 부분 결과를 성공으로 표시하지 말고, 설정 변경 전후의 실제 자동 재계산·복구·저장까지 확인해.
@@ -82,7 +85,7 @@ https://github.com/mangnoeyh/pad.git 의 공개 키트를 사용해줘.
 이전 명단·묶음 ID를 하드코딩하거나 승인된 규칙의 범위를 넘어 확대하지 마.
 개별 구제 가능 인원을 합산하지 말고 예외를 함께 적용한 전체 결과에서 충돌·새 누락·예외 범위와 부작용을 검증해.
 승인된 예외를 새 기준에 반영한 뒤 문제 필수 제약과 나머지 조건을 모두 통과하면 정식 후보로 채택할 수 있어.
-승인되지 않은 완화나 필수 제약 미충족을 해결된 것으로 쓰지 마. 자세한 절차는 baseline-and-delivery.md를 적용해.
+승인되지 않은 완화나 필수 제약 미충족을 해결된 것으로 쓰지 마. 자세한 절차는 references/baseline-and-delivery.md를 적용해.
 새로 발견한 문제를 곧바로 강제 제약이나 숨겨진 평가 기준으로 만들지 마.
 나에게는 실제 결과 → 추천안 하나와 이유 → 선택하면 좋아지는 점과 감수할 점 → 중요한 질문 하나 순서로 짧고 쉽게 설명해줘.
 내가 운영상 무엇을 중요하게 보는지 말하면, 그것을 계산 기준·검증·구현으로 바꾸는 일은 네가 맡아줘.
@@ -121,11 +124,12 @@ https://github.com/mangnoeyh/pad.git 의 공개 키트를 사용해줘.
 중간중간 구현 진행·확인한 결과·현재 논의할 쟁점을 짧게 알려줘. 결정이 없어도 이유와 다음 작업은 설명해줘.
 내 질문과 이해 확인 때문에 이미 승인된 독립 구현까지 자동으로 중단하지 마. 내가 전체 중단을 요청하면 지켜줘.
 대표 입력 하나를 실제 경로·읽기 함수·자료형 변환·검증·연결/필터·계산·저장/출력까지 따라가며 설명해줘.
-웹 입력·재계산·저장이 있으면 app-checks.md와 web-state-checks.md의 관련 예외를 실제로 검증해줘.
+웹 입력·재계산·저장이 있으면 references/app-checks.md와 references/web-state-checks.md의 관련 예외를 실제로 검증해줘.
 잘못된 입력·없는 대상·중복 클릭/동시 요청·처리 중 조건 변경·늦은 응답·실패/재시도·새로고침·권한을 실제 기능에 맞게 살펴봐.
 프론트 버튼이나 문구만으로 방어됐다고 하지 말고 서버·저장 상태까지 확인하며, 실행하지 못한 경우는 미검증으로 남겨줘.
-이전 안정본을 보존하고 baseline-and-delivery.md에 따라 최종 전달 소스와 실제 실행·결과가 일치하는지 확인해줘.
-동일 입력·같은 기준에서 필수 조건과 목표 지표를 따로 비교하고, 필요한 경우 optimization-validation.md를 적용해줘.
+이전 안정본을 보존하고 references/baseline-and-delivery.md에 따라 최종 전달 소스와 실제 실행·결과가 일치하는지 확인해줘.
+최종 검증에 들어갈 때 결과에 영향을 주는 워커의 쓰기를 완료하거나 중단 확인하고, 그 후보로 검증·보고서·질답을 맞춰줘. 이후 수정은 필요한 재검증과 설명 갱신 뒤 반영해.
+동일 입력·같은 기준에서 필수 조건과 목표 지표를 따로 비교하고, 필요한 경우 .agents/skills/analysis-validation/references/optimization-validation.md를 적용해줘.
 워커의 완료 설명만 믿지 말고 통합된 파일에서 검사해. 테스트 0개·전부 skip·예제만 통과를 전체 검증으로 쓰지 마.
 HTTP·API·빌드 검사와 내가 직접 확인한 화면·클릭을 구분하고 미검증 사항은 남겨줘.
 예산 안에서 완성본을 읽기 전용으로 따로 검토하고, 재현 가능한 지적만 관련 수정·재검사로 연결해줘.
@@ -201,7 +205,8 @@ HTTP·API·빌드 검사와 내가 직접 확인한 화면·클릭을 구분하�
 
 ```text
 기존 작업을 메인 논의·워커 구현의 두 트랙으로 이어가자. 과제 지침과 기존 키트의 START_HERE.md,
-double-loop-solver Skill과 references/guided-collaboration.md, parallel-work.md, stakeholder-questions.md를 읽어줘.
+double-loop-solver Skill과 references/guided-collaboration.md, references/parallel-work.md, references/stakeholder-questions.md를 읽어줘.
+실제 과제 루트와 기존 키트 루트를 다시 확인하고, 키트의 상대 경로와 과제의 입력·출력 경로를 혼동하지 마.
 기존 계약·기록·최선의 안정본·미정 질문을 먼저 확인하고 처음부터 반복하지 마.
 현재 실제 남은 시간은 [분/초], 제출 확인에 남길 시간은 [분]이야.
 내가 이미 확인한 내용, 실제 워커 상태·검사 결과, 미답 질문과 현재 기준 버전을 짧게 정리해줘.

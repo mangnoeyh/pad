@@ -20,6 +20,15 @@
 
 ## 환경과 테스트
 
+이 문서의 `tools/`, `examples/`, `requirements-*.txt`와 테스트 명령은 **키트 루트에서 실행하는 경로**입니다. 키트를 실제 과제 아래의 별도 폴더에 복제했다면 과제 루트와 구분하세요. 문서의 Markdown 링크는 해당 문서 위치 기준이며, 시작 요청의 키트 경로는 확인한 복제본 루트에 맞춰 해석합니다.
+
+실제 자료를 처리할 때는 스크립트·입력·출력의 위치를 명확히 지정하세요. 아래 `/path/to/kit`와 `/path/to/task`를 현재 환경의 절대 경로로 바꾸면 과제 폴더에서도 실행할 수 있습니다. 실제 과제 자료·결과·학습 기록은 과제의 허용 위치에 저장합니다.
+
+```bash
+python "/path/to/kit/tools/check_environment.py"
+python "/path/to/kit/tools/inspect_data.py" "/path/to/task/data/input.csv" --output-dir "/path/to/task/artifacts/triage"
+```
+
 코드는 Python 3.10 이상 문법을 사용하며, CPython 3.12.14에서 검증했습니다. 먼저 `python tools/check_environment.py`로 설치 상태를 확인하세요. 필요한 패키지가 없고 설치가 허용된 경우, 활성화한 격리 환경에서 해당 묶음만 설치하는 것을 권장합니다.
 
 ```bash
