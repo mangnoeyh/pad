@@ -4,20 +4,9 @@
 
 ## 작업을 시작할 때
 
-[START_HERE.md](START_HERE.md)에 시작 요청과 재개 요청을 준비했습니다. 작업 공간에서 이 공개 키트를 별도 폴더로 가져오고, 시작 문서와 [double-loop-solver Skill](.agents/skills/double-loop-solver/SKILL.md)을 직접 읽히면 됩니다. 과제 루트와 기존 지침을 유지하세요.
+[START_HERE.md](START_HERE.md)의 시작·재개 요청을 사용하세요. 기본 방식은 함께 문제를 이해한 뒤 메인이 사용자와 운영 판단·최적화를 논의하고 워커가 필수 구현을 진행하는 것입니다. 단계별로 읽을 지침은 [double-loop-solver Skill](.agents/skills/double-loop-solver/SKILL.md)이 안내합니다. 기존 과제 지침과 루트를 유지하고, 이 목록을 한꺼번에 읽거나 실행하지 않습니다.
 
-- 처음에는 문제와 자료를 함께 이해하고 실제 병렬 기능을 짧게 확인합니다. 사용자의 이해 확인 후에는 시작 요청에 위임된 E2E 구현을 자율 진행합니다.
-- 메인은 사용자와 운영상 빠진 요구·핵심 최적화·목표 간 절충을 논의합니다. 담당자에게 보낼 질문을 만들고, 부분 답변은 미답 부분을 좁혀 다시 묻습니다.
-- 워커는 기존 환경에서 가장 단순한 유효한 방법으로 서비스 구현·검증을 계속합니다. 중요한 결정에 의존하는 부분만 기다리며, 메인이 확정한 변경을 명시적으로 전달합니다.
-- 설정과 입력을 바꿔 쓰는 서비스라면 사람은 개발 중 일반 판단 기준을 정하고, 서비스는 실행 중 예외 선정·재계산·검증을 자동 수행하도록 만듭니다. 과거 명단이나 기본 설정의 결과 한 번으로 완성을 판단하지 않습니다.
-- 메인은 통합·전체 검증도 책임집니다. 대표 결과·실제 데이터 처리·판단 근거를 설명하고, 제출 전 사용자가 자신의 말로 설명할 기회를 갖습니다.
-- 첫 E2E 동작이 확인되면 구조·데이터 흐름 해설 초안을 바로 제공해 개선 대기 중에 읽게 합니다. 각 개선 회차는 결과와 다음 추천을 보고 사용자가 계속/종료를 정하며, 명시적 개선 종료 전 임의로 전체 완료를 선언하지 않습니다. 회차별 실패·전후 수치·부작용·서비스 반영은 누적 표로 남깁니다.
-
-적용 순서와 내부·외부 루프 사례는 [이중 루프 적용 방법](DOUBLE_LOOP.md), 작업 완료 후 질답 구성과 연습은 [제출 전 예상 질답 준비](PRACTICE_QA.md)를 참고하세요.
-
-첫 E2E 동작 뒤 [전체 해설 보고서 양식](templates/solution-review.md)에 현재 구조·데이터 흐름부터 작성하고, 개선 중 같은 문서를 갱신합니다. 사용자의 개선 종료 뒤 최종 실행본과 해설·누적 개선 표를 맞추며 예상 질답은 별도 파일로 정리합니다. 완성 문서는 실제 과제 환경 안에 저장합니다.
-
-대화 운영 방식은 Markdown 지침이며, 아래 선택형 실행 도구를 함께 제공합니다. 별도 모델·API 키·프레임워크 설치가 필요하지 않으며, 실제 타이머나 실행을 강제로 제어하는 프로그램은 아닙니다. 계약·실행 결과·사람의 결정은 과제 작업 공간에 남깁니다.
+이 문서는 도구 목록입니다. 이중 루프의 개념은 [DOUBLE_LOOP](DOUBLE_LOOP.md), 설명 자료는 [solution-review 양식](templates/solution-review.md), 별도 예상 질답은 [PRACTICE_QA](PRACTICE_QA.md)를 참고하세요. Markdown 지침이 실제 타이머나 백그라운드 실행을 강제하는 것은 아닙니다.
 
 ## 환경과 테스트
 
@@ -112,9 +101,7 @@ python examples/tabular_ml.py data/demo/measurements.csv --target target --task 
 
 ## AI와 함께 쓰는 방법
 
-대화형 시작·재개 요청은 [START_HERE.md](START_HERE.md)를 사용하세요. 아래는 문제를 함께 읽는 짧은 시작 요청입니다. 이후 동의한 작업에 필요한 세부 Skill만 읽힙니다. 복제한 하위 폴더의 Skill이 자동 발견되는지는 실행 환경에 따라 다릅니다. 보이지 않으면 Skill 파일 경로를 직접 지정하세요. 기존 과제의 `AGENTS.md`를 덮어쓰지 마세요.
-
-> START_HERE.md의 두 트랙 진행을 적용해줘. 먼저 문제·자료·필수 결과를 쉬운 예시로 설명하고 내 이해를 확인해줘. 이해 확인 후에는 워커가 가장 간단한 방법으로 필수 E2E 구현을 자율 진행하고, 메인은 나와 숨은 운영 요구·핵심 최적화를 논의해줘. 담당자 답변의 미답 부분은 후속 질문으로 좁혀주고, 확정한 변경만 워커에게 전달해줘. 실제 병렬 실행과 답변 대기 중 실행 지속은 처음에 짧게 확인해줘.
+기본 협업 방식은 [START_HERE.md](START_HERE.md)의 요청으로 선택합니다. 하위 폴더의 Skill이 자동 발견되지 않으면 파일 경로를 직접 지정하세요. 기존 과제의 `AGENTS.md`를 덮어쓰지 않습니다.
 
 실행 후에는 다음처럼 검증을 요청할 수 있습니다.
 
@@ -162,7 +149,7 @@ git -C pad rev-parse HEAD
 | 범위 변경·기준본·실제 전달 연결 | [baseline and delivery](.agents/skills/double-loop-solver/references/baseline-and-delivery.md) | 추가 조건 사전 점검, 전체 비용 재산정, 실험 승격, 전달 소스에서의 실행 재현 |
 | 고정 입력에서 후보 해 개선 | [optimization validation](.agents/skills/analysis-validation/references/optimization-validation.md) | 기준선 실측, 제약과 목적 분리, 축소 선별 뒤 전체 검증, 같은 입력·조건의 안정본 보존 |
 | 문제 구조에 맞는 방법 선택·후보 비교 | [method selection](.agents/skills/double-loop-solver/references/method-selection.md), [비교 양식](templates/candidate-comparison.md) | 적용 조건·지원하지 않는 제약 확인, 같은 기준의 처리 범위·품질·시간 비교 |
-| 조기 학습·회차별 개선과 사용자 종료 | [개선 회차](.agents/skills/double-loop-solver/references/improvement-rounds.md), [회차 기록](templates/cycle-log.md) | E2E 직후 초안, 결과와 계속/종료 확인, 실패 포함 누적 표, 종료 후 최종 검증·학습 |
+| 조기 학습과 회차별 개선 | [학습·대화](.agents/skills/double-loop-solver/references/guided-collaboration.md), [개선 회차](.agents/skills/double-loop-solver/references/improvement-rounds.md) | 첫 E2E 뒤 학습 초안, 회차 결과와 실제 계속/종료 답, 같은 해설에 누적 이력 |
 | 기본 알고리즘부터 운영 최적화까지 찾아보기 | [방법 목차](docs/methods/INDEX.md) | 그래프·DP·구간·문자열·수치·배정·흐름·경로·일정·공간·개선. 관련 절만 읽고 목록 밖 대안도 검토 |
 | 여러 방법의 연결·실패·사용자 설명 | [조합](docs/methods/composition.md), [검산](docs/methods/validation.md), [쉬운 설명](docs/methods/explain.md) | 후보 손실과 결합 제약, 작은 정확 해와 전체 검증, 현재 설정·실제 서비스 경로 연결 |
 | 기본 계산의 실행 예제와 독립 검산 | [실행 예제 안내](examples/methods/USAGE.md) | 표준 라이브러리 함수·지원 계약·검산 명령. 자료에 있는 모든 방법이 구현된 것은 아님 |
