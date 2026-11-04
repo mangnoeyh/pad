@@ -15,7 +15,7 @@ Read relevant detail at its trigger, then reuse it. Do not read the launch promp
 
 | Trigger | Read / act |
 | --- | --- |
-| Initial understanding or explaining a material choice | [Guided collaboration](references/guided-collaboration.md). In the selected default mode, explain the problem and await understanding before design or implementation. |
+| Initial understanding or explaining a material choice | [Guided collaboration](references/guided-collaboration.md). Identify the required artifact and what makes it useful; mixed tasks can need different checks for different parts. In the selected default mode, explain the problem and await understanding before design or implementation. |
 | Checking or using workers | [Parallel work](references/parallel-work.md). Verify actual execution and waiting-state behavior; use small independent tasks with explicit ownership. Main owns integration and confirmed decision handoff. |
 | Understanding confirmed | Briefly explain the simplest valid E2E approach and start the already-authorized independent work without routine reapproval. Main begins operational discovery through [stakeholder questions](references/stakeholder-questions.md). |
 | A method choice materially affects quality, time or resources | Proactively compare suitable methods through [method selection](references/method-selection.md) and only relevant parts of the [method index](../../../docs/methods/INDEX.md). Explain the tradeoff plainly; ask the unresolved business decision, not an algorithm-name quiz. |
@@ -54,7 +54,9 @@ Read only applicable guidance when planning that work. Pass relevant failure con
 | Failure diagnosis or minimal repair | [evidence-debug](../evidence-debug/SKILL.md) |
 | Existing code, negative paths, editor/disk/server discrepancies or integration | [execution review](references/execution-review.md) |
 | Web UI / HTTP API | [app checks](references/app-checks.md); stateful input, identity, recomputation or saved commands additionally use [web state checks](references/web-state-checks.md) |
+| Tabular analysis, transformations, prediction or ranking evaluation | [data triage](../data-triage/SKILL.md) for unfamiliar tabular inputs, then relevant [analysis validation](../analysis-validation/SKILL.md); do not add a predictive model when the task does not need one |
 | Fixed-input optimization | [optimization validation](../analysis-validation/references/optimization-validation.md): feasibility, proxy screening and full-input evidence are distinct |
+| Source-backed analysis, policy decisions, explanations or learning content | [content checks](references/content-checks.md); use alongside data or app checks when those surfaces are also present |
 | Repeated checks against changing source | [evidence tools](references/evidence-tools.md), only if the bundled runner adds useful traceability |
 | Final running and delivered candidate | baseline and delivery; [delivery review](references/delivery-review.md) if using its optional file-check tool |
 

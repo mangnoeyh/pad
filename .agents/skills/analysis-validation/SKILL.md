@@ -33,8 +33,12 @@ Use existing tests or a few fixed cases and a bounded seeded generator from the 
 - Check class coverage or target ranges, subgroup errors, and instability when these affect the decision. Do not tune repeatedly against the final holdout and then describe it as untouched.
 - Treat `examples/tabular_ml.py` as an editable example, not proof that random splitting or its model fits the task.
 
+## Ranking evaluation, when relevant
+
+For ranking recommendations, choose a baseline and metric that match the actual users, candidate items, time boundary and available relevance or feedback. Classification/regression example performance is not ranking quality. Check whether feedback exists only for exposed items and what can be assessed for new users/items. Offline evaluation does not establish live usage, revenue or satisfaction gains; do not add an unrequested experiment system or collect new data just to claim those gains.
+
 ## Delivery evidence
 
 Rerun the essential path from the recorded command when feasible. Check required filenames, schemas, saved state, and outputs against the task README. State what actually ran, its result, what remains unverified, and the consequence of the main limitation. Use `templates/report.md` and `templates/decisions.md` when helpful; do not claim checks passed without execution evidence.
 
-When this task needs predictive data checks, read [additional checks](references/honest-eval.md). The task instructions and actual deployment scenario remain authoritative.
+When this task needs predictive or ranking evaluation, read [additional checks](references/honest-eval.md). The task instructions and actual deployment scenario remain authoritative.

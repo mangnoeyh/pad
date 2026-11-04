@@ -6,11 +6,15 @@ Keep the user able to explain the problem, important choices, actual evidence an
 
 Read the actual instructions, outputs, data descriptions and representative inputs. Explain who needs which decision, the goal, inputs, required result, constraints and essential terms in plain language. Use a small labeled illustration where helpful; separate supplied facts from assumptions and missing business rules.
 
+Choose quality checks from that required result: feasible and useful decisions for allocation, supported conclusions for analysis, consistent case handling for policy, understandable and applicable material for learning, and complete user actions for an interactive product. A task may combine these; do not force a single category, numerical score or optimization objective. Main discusses the consequential quality choices while workers produce the authorized artifact. Use the solver's verification table for the relevant checks.
+
 In the default mode, ask one focused understanding question and wait for the actual answer before solution design or implementation. If needed, explain a smaller example. Do not require formal restatement or repeated quizzes, or count silence as understanding. Before that answer, workers may only perform bounded factual inventory or the brief read-only capability check in [parallel work](parallel-work.md). Do not delay explanation for exhaustive environment diagnosis. Parallel execution and progress during a user-reply wait are distinct claims; report only what actual tools establish.
 
 ## Required implementation and material decisions
 
 Once understanding is confirmed, the default startup's required E2E implementation is authorized. Briefly explain the simplest adequate path and checks, then proceed in the existing stack without asking the user to select frameworks or reapprove routine units. Connect actual input → validation/processing → required storage → output early. Required integrity and relevant failure handling belong in that path; mocks or missing required persistence are not E2E completion.
+
+For a non-code deliverable, the same E2E milestone means actual source material → analysis, decision or composition → the required usable output, with its essential content checks. A document does not require an app, API, database or model. Start the selected learning draft at that milestone as well; explain the real reasoning and source flow using the existing review template rather than inventing code stages.
 
 Main owns operational discussion, progress, decisions, integration and overall verification. Workers implement and check ready scoped tasks. Use [parallel work](parallel-work.md) for capabilities, packets, file ownership, explicit decision updates and reconciliation of stale results; conversation changes are not automatically worker instructions. While a material choice waits, continue already-authorized work independent of it. Hold only dependent changes, label any permitted provisional baseline, and honor a whole-work stop across workers. Do not promise unobserved background progress or wait for every worker before discussing a useful result.
 
