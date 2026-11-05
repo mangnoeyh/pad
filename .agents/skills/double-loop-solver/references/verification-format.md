@@ -2,16 +2,16 @@
 
 Requires Python 3.10 or later and only the standard library. Run from any directory;
 `--project` and `--store` resolve from that directory. Store must be a strict child
-of the existing project directory. All watched and report paths use forward slashes,
+of the existing project directory. All watched, required-watch and report paths use forward slashes,
 relative to the project. At least one existing regular watched file is required.
 Project and store must use local filesystem paths; network prefixes and URI forms
-are rejected before filesystem access. Watched/report paths reject absolute paths,
+are rejected before filesystem access. Watched/required-watch/report paths reject absolute paths,
 parent components, colons (including alternate streams), and escaping symlinks.
 Symlinks to watched files inside the project are allowed; report symlinks are not.
 
 ```text
-python tools/verify_work.py record --project PROJECT --store PROJECT/evidence --watch src/main.py --timeout 60 --test-report results.xml -- python generate_results.py
-python tools/verify_work.py verify --project PROJECT --store PROJECT/evidence --record RUN_ID --minimum-tests 5
+python tools/verify_work.py record --project PROJECT --store PROJECT/evidence --watch src/main.py --watch requirements.md --timeout 60 --test-report results.xml -- python generate_results.py
+python tools/verify_work.py verify --project PROJECT --store PROJECT/evidence --record RUN_ID --minimum-tests 5 --require-watch requirements.md
 ```
 
 The report must not exist before the command starts, must differ from every watched
@@ -38,6 +38,19 @@ test results, and a positive explicit `--minimum-tests` that is satisfied. Missi
 test evidence or a missing/unsatisfied minimum yields `review` and exit one.
 Recorded unsuccessful commands yield `failed`; invalid or inconsistent records
 yield `error`. Successful process exit alone never establishes test success.
+
+Repeat optional `--require-watch PATH` at verification for the current files on
+which the checked claim depends, such as requirements or recorded stakeholder
+decisions. Each must be an existing regular file included by `--watch` in the
+original run; omission yields `error` and exit two even if that run's narrower
+input set still matches. Paths match by resolved local file identity; duplicate
+required paths, including aliases to the same file, are rejected. Verification
+never adds dependencies to an old record. A new dependency requires a fresh
+execution recorded with its `--watch`; a changed watched dependency already fails
+the before/after/now hash check. Unwatched, unrequired files do not affect the
+result. Without `--require-watch`, the existing recorded-input check is unchanged.
+The caller selects relevant dependencies; the tool cannot infer relevance from
+natural-language requirements or answers, or prove that the tests cover them.
 
 Each run gets an exclusively created UUID directory containing `record.json`,
 `output.log`, and, when available, a `report.xml` snapshot. Runs are never reused or

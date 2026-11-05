@@ -6,32 +6,34 @@
 
 ## 실행하기
 
-먼저 실제 작업 루트, 확인할 입력·구현·테스트 파일, 검사 명령과 통과 기준을 정한다. 로그는 실제 작업 공간 안에 두고 공개 키트에 올리지 않는다.
+먼저 실제 작업 루트, 확인할 입력·구현·테스트 파일, 검사 명령과 통과 기준을 정한다. 그 판단을 좌우하는 요구·설정·실제 담당자 답변의 기존 기록도 감시 대상에 포함한다. 답변 전체를 매번 새 문서로 복제하지 말고, 확인한 원문 위치와 현재 적용 기준을 연결한 기존 파일을 사용한다. 로그는 실제 작업 공간 안에 두고 공개 키트에 올리지 않는다.
 
 `record`는 인자로 받은 명령을 셸 해석 없이 실행한다. 아래 경로와 파일명은 실제 값으로 바꾼다. `--watch`는 작업 루트 기준 상대 파일 경로이며 필요한 만큼 반복한다.
 
 ```bash
-python /path/to/pad/tools/verify_work.py record --project /path/to/task --store /path/to/task/work/checks --watch src/main.py --watch tests/test_main.py --timeout 60 --test-report work/unit-results-01.xml -- python /path/to/pad/tools/run_unit_tests.py --tests tests --report work/unit-results-01.xml
+python /path/to/pad/tools/verify_work.py record --project /path/to/task --store /path/to/task/work/checks --watch src/main.py --watch tests/test_main.py --watch work/task-notes.md --timeout 60 --test-report work/unit-results-01.xml -- python /path/to/pad/tools/run_unit_tests.py --tests tests --report work/unit-results-01.xml
 ```
 
 `run_unit_tests.py`는 기본 unittest를 실행하고 JUnit XML을 작성한다. 추가 패키지 설치는 필요 없다. pytest가 이미 허용된 환경에 있다면 자식 명령에 `python -m pytest --junitxml=work/results-01.xml`처럼 실제 명령을 지정할 수도 있다.
 
 각 실행에서 아직 없는 새 보고서 경로를 사용한다. 기존 보고서를 덮어쓰거나 이전 보고서로 통과 처리하지 않는다. 경로에 공백이 있으면 각 인자를 따옴표로 감싼다. 명령·로그에는 비밀값이 들어가지 않게 한다.
 
-출력 JSON의 `record_id`를 사용해 현재 파일과 기록을 대조한다. 최소 개수는 실제 확정한 검사 범위에서 정하며, 검사 후 임의로 줄여 통과시키지 않는다.
+출력 JSON의 `record_id`를 사용해 현재 파일과 기록을 대조한다. 현재 주장에 필요한 파일을 검토해 `--require-watch`로 지정하면, 옛 실행에서 그 파일을 감시하지 않은 경우에도 검증 성공으로 처리하지 않는다. 필요한 만큼 반복하며, 아래 예시의 파일명을 실제 의존 파일로 바꾼다. 최소 개수는 실제 확정한 검사 범위에서 정하며, 검사 후 임의로 줄여 통과시키지 않는다.
 
 ```bash
-python /path/to/pad/tools/verify_work.py verify --project /path/to/task --store /path/to/task/work/checks --record 실제-record_id --minimum-tests 3
+python /path/to/pad/tools/verify_work.py verify --project /path/to/task --store /path/to/task/work/checks --record 실제-record_id --minimum-tests 3 --require-watch src/main.py --require-watch tests/test_main.py --require-watch work/task-notes.md
 ```
 
 ## 판정 범위
+
+요구·답변이 바뀌면 코드가 같아도 이전 검사의 적용 범위를 다시 판단한다. 기존 현재 상태에서 영향받는 검증을 재확인 필요로 표시하고, 해당 구현·설정·기대값을 현재 기준에 맞춘 뒤 새 실행을 기록한다. 감시 누락을 발견하면 옛 기록에 파일이나 해시만 덧붙이지 않는다. 원래 답변·실행 기록은 보존하고, 새 근거를 얻기 전에는 최종 해설에서 현재 조건의 PASS로 인용하지 않는다.
 
 - 명령 종료 코드 0과 테스트 검증 성공을 구분한다. 테스트 보고서 없이 실행만 성공한 결과는 테스트 통과 근거가 아니다.
 - 검증은 실행 전후와 현재 감시 파일의 해시, 로그·보고서의 해시, 실제 종료 코드, XML의 실제 검사 항목·실패·오류·건너뜀과 최소 개수를 확인한다.
 - 빈 테스트, 실패·오류, 건너뛴 검사, 해석할 수 없는 보고서, 낡은 파일 상태는 검증 완료로 처리하지 않는다.
 - 테스트가 성공해도 검사 계획의 완전성, 기대값의 업무 정확성, 사용자 이해, 수동 화면 확인, 실제 전달 완료까지 증명하지 않는다.
 
-파일 해시는 지정한 파일의 현재 바이트 비교다. 기록은 전자서명이 아니며 사람이 위조할 수 있다. 감시하지 않은 의존성이나 수정 후 원상복원까지 탐지하지 않는다. 자식 명령이 수행하는 부수 효과를 차단하는 샌드박스도 아니다.
+파일 해시는 지정한 파일의 현재 바이트 비교다. `--require-watch`도 필요한 의존성을 사람이거나 에이전트가 지정해야 하며, 자연어 변경의 영향이나 검사 누락을 자동 추론하지 않는다. 같은 감시 파일 안의 무관한 문구 변경도 낡은 근거로 표시할 수 있으므로 파일별 판정과 업무상 영향 판단을 구분한다. 영향 없는 검사를 일괄 재실행하거나 통과를 위해 관련 파일을 감시에서 빼지 않는다. 기록은 전자서명이 아니며 사람이 위조할 수 있다. 감시하지 않은 의존성이나 수정 후 원상복원까지 탐지하지 않는다. 자식 명령이 수행하는 부수 효과를 차단하는 샌드박스도 아니다.
 
 타임아웃 시 실행한 프로세스를 종료하고 회수한다. POSIX에서는 프로세스 그룹을 함께 정리하며, Windows의 후손 프로세스 전체 종료는 보장하지 않는다. 임의의 장기 서버 실행보다 종료되는 검사 명령을 사용한다.
 

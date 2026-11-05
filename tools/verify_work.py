@@ -301,6 +301,15 @@ def verify(args):
     require(len(source) <= 1024 * 1024, "Record exceeds 1 MiB")
     data = json.loads(source, object_pairs_hook=pairs, parse_constant=lambda _: require(False, "Nonfinite JSON"))
     schema(data, args.record, project)
+    watched = {relative(project, item["path"])[0].resolve() for item in data["inputs"]}
+    required = set()
+    for raw in args.require_watch:
+        path, name = relative(project, raw)
+        resolved = path.resolve()
+        require(resolved not in required, "Duplicate required watched file")
+        required.add(resolved)
+        require(resolved in watched,
+                "Required file was not watched in recorded run: " + name + "; record a new run with --watch")
     log = run / "output.log"
     require(not log.is_symlink() and digest(log) == data["log_sha256"], "Log hash mismatch")
     for item in data["inputs"]:
@@ -350,6 +359,8 @@ def main():
         else:
             sub.add_argument("--record", required=True)
             sub.add_argument("--minimum-tests", type=int)
+            sub.add_argument("--require-watch", action="append", default=[],
+                             help="Require this current dependency to have been watched in the recorded run (repeatable)")
     args = None
     try:
         args = parser.parse_args()

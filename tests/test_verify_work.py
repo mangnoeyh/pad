@@ -144,26 +144,29 @@ class VerifyWorkContractTests(unittest.TestCase):
         self.assertIsNotNone(run.record_id)
         return run
 
-    def verify(self, run: RecordedRun, minimum: int = 1):
+    def verify(self, run: RecordedRun, minimum: int = 1, *, require_watch: list[str] | None = None):
         self.assertIsNotNone(run.record_id)
-        return self.invoke([
+        arguments = [
             "verify", "--project", str(self.project), "--store", str(self.store),
             "--record", run.record_id, "--minimum-tests", str(minimum),
-        ])
+        ]
+        for relative_path in require_watch or []:
+            arguments += ["--require-watch", relative_path]
+        return self.invoke(arguments)
 
-    def assert_verified(self, run: RecordedRun, minimum: int = 1) -> None:
-        process, data = self.verify(run, minimum)
+    def assert_verified(self, run: RecordedRun, minimum: int = 1, *, require_watch: list[str] | None = None) -> None:
+        process, data = self.verify(run, minimum, require_watch=require_watch)
         self.assertEqual(process.returncode, 0, process.stderr)
         self.assertEqual(data.get("status"), "verified_tests")
         self.assertIsNot(data.get("whole_task_done"), True)
         self.assertIsNot(data.get("approved"), True)
 
-    def assert_not_verified(self, run: RecordedRun, minimum: int = 1) -> None:
+    def assert_not_verified(self, run: RecordedRun, minimum: int = 1, *, require_watch: list[str] | None = None) -> None:
         if run.record_id is None:
             self.assertNotEqual(run.process.returncode, 0)
             self.assertNotEqual(run.data.get("status"), "verified_tests")
             return
-        process, data = self.verify(run, minimum)
+        process, data = self.verify(run, minimum, require_watch=require_watch)
         self.assertNotEqual(process.returncode, 0, process.stdout)
         self.assertNotEqual(data.get("status"), "verified_tests")
 
@@ -228,6 +231,69 @@ class VerifyWorkContractTests(unittest.TestCase):
     def test_fresh_success_report_verifies_multiple_watched_files(self) -> None:
         run = self.successful_record(xml=junit(), watch=["input.txt", "other.txt"])
         self.assert_verified(run, minimum=2)
+
+    def test_required_dependencies_match_canonical_record_paths(self) -> None:
+        (self.project / "requirements.md").write_text("Maximum: 10\n", encoding="utf-8")
+        (self.project / "decisions.md").write_text("Accepted: 8\n", encoding="utf-8")
+        run = self.successful_record(
+            xml=junit(), watch=["input.txt", "./requirements.md", "decisions.md"],
+            extra_code=(
+                "limit = int(Path('requirements.md').read_text().split(':')[1])\n"
+                "accepted = int(Path('decisions.md').read_text().split(':')[1])\n"
+                "assert accepted <= limit"
+            ),
+        )
+        self.assert_verified(run, minimum=2, require_watch=["./requirements.md", "decisions.md"])
+
+    def test_requirement_or_decision_change_invalidates_record(self) -> None:
+        dependencies = ["requirements.md", "decisions.md"]
+        for changed in dependencies:
+            with self.subTest(changed=changed):
+                for name in dependencies:
+                    (self.project / name).write_text("Original decision\n", encoding="utf-8")
+                run = self.successful_record(xml=junit(), watch=["input.txt", *dependencies])
+                self.assert_verified(run, require_watch=dependencies)
+                (self.project / changed).write_text("Revised decision\n", encoding="utf-8")
+                self.assert_not_verified(run, require_watch=dependencies)
+
+    def test_new_required_dependency_needs_fresh_execution_without_rewriting_old_record(self) -> None:
+        for name, existed in (("other.txt", True), ("new-answer.md", False)):
+            with self.subTest(dependency_existed_at_recording=existed):
+                original = self.successful_record(xml=junit())
+                directory = self.record_directory(original)
+                preserved = {p.name: p.read_bytes() for p in directory.iterdir() if p.is_file()}
+                if not existed:
+                    (self.project / name).write_text("New stakeholder answer\n", encoding="utf-8")
+                self.assert_verified(original, require_watch=["input.txt"])
+                process, data = self.verify(original, require_watch=["input.txt", name])
+                self.assertEqual(process.returncode, 2)
+                self.assertEqual(data.get("status"), "error")
+                refreshed = self.successful_record(xml=junit(), watch=["input.txt", name])
+                self.assertNotEqual(original.record_id, refreshed.record_id)
+                self.assert_verified(refreshed, require_watch=["input.txt", name])
+                self.assert_not_verified(original, require_watch=["input.txt", name])
+                self.assertEqual(
+                    preserved, {p.name: p.read_bytes() for p in directory.iterdir() if p.is_file()},
+                )
+
+    def test_unrelated_unrequired_file_change_does_not_invalidate_record(self) -> None:
+        run = self.successful_record(xml=junit())
+        self.assert_verified(run, require_watch=["input.txt"])
+        self.other_source.write_text("Unrelated edit\n", encoding="utf-8")
+        self.assert_verified(run, require_watch=["input.txt"])
+
+    def test_invalid_required_paths_and_duplicate_aliases_are_rejected(self) -> None:
+        run = self.successful_record(xml=junit())
+        cases = [
+            [""], ["missing.txt"], ["."], ["store"], [str(self.source)],
+            ["../outside.txt"], ["https://example.invalid/input.txt"], [".\\input.txt"],
+            ["input.txt", "./input.txt"],
+        ]
+        for required in cases:
+            with self.subTest(require_watch=required):
+                process, data = self.verify(run, require_watch=required)
+                self.assertEqual(process.returncode, 2)
+                self.assertEqual(data.get("status"), "error")
 
     def test_records_use_distinct_directories_and_keep_earlier_logs(self) -> None:
         first = self.successful_record(with_report=False)
